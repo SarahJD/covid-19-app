@@ -148,3 +148,9 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+
+.corona-virus-image {
+  width: 3rem;
+	height: auto;
+	margin: 1rem 0; 
+}
