@@ -12,7 +12,17 @@ let pokemonRepository = (function() {
 	}
 
 	function add(pokemon) {
+		if (typeof pokemon==='object') { //check if data type of inserted parameter is an object
 		pokemonList.push(pokemon);
+		}else{
+		console.log('This is not an object');
+		}
+		/*
+		if (Object.key pokemon==='name')
+	}else{
+	console.log('This object does not have the correct object keys');
+	}
+	*/
 	}
 
 	return {
@@ -38,7 +48,7 @@ pokemonRepository.getAll().forEach(function(pokemon) {
 });
 */
 
-//3rd possibility: with a for each loop and a named function
+// 3rd possibility: with a for each loop and a named function
 
 function myLoopFunction(pokemon) {
 	document.write("<p>" + pokemon.name + " (height: " + pokemon.height + ")");
@@ -50,3 +60,15 @@ function myLoopFunction(pokemon) {
 pokemonRepository.getAll().forEach(myLoopFunction); //calling the getAll function in order to retrieve the data inside the IIFE
 
 document.write("<br>"); // for line break when js-file is loaded into html side
+
+// check if parameter added to the array is an object
+function addv(pokemon) {
+	if (typeof pokemon==='object') {
+		pokemonRepository.add(pokemon)
+	};
+}
+
+// just to check if object validation for the add-function's parameter works
+pokemonRepository.add({a:1});
+console.log(pokemonRepository.getAll());
+console.log(Object.keys(pokemonRepository.getAll()));
