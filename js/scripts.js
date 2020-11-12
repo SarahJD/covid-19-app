@@ -11,6 +11,25 @@ let pokemonRepository = (function() {
 		return pokemonList;
 	}
 
+	function addListItem(pokemon) {
+		let pokemonList = document.querySelector('.pokemon-list');
+		let listItem = document.createElement('li');
+		let button = document.createElement('button');
+		button.innerText = pokemon.name;
+		button.classList.add('pokemon-button');
+		listItem.appendChild(button);
+		pokemonList.appendChild(listItem);
+		addEventListenerToButton(button, pokemon);
+	}
+
+	function addEventListenerToButton(myButton, myPokemon){
+		myButton.addEventListener('click', function(){showDetails(myPokemon)});
+	}
+
+	function showDetails(pokemon) {
+		console.log(pokemon);
+	}
+
 	function add(pokemon) {
 		if (typeof pokemon==='object') { //check if data type of inserted parameter is an object
 		pokemonList.push(pokemon);
@@ -28,46 +47,15 @@ let pokemonRepository = (function() {
 
 	return {
 		getAll: getAll,
-		add: add
+		add: add,
+		addListItem: addListItem
 	};
 })();
 
-/* 1st possibility: with a for loop
-for (let i = 0; i < pokemonRepository.getAll().length; i++) { //initialization, condition, action
-	document.write("<p>" + pokemonRepository.getAll()[i].name + " (height: " + pokemonRepository.getAll()[i].height + ")" + "</p>"); // write it on the website
-}
-*/
-
-
-/* 2nd possibility: with a for each loop and an anonymous function
-pokemonRepository.getAll().forEach(function(pokemon) {
-	document.write("<p>" + pokemon.name + " (height: " + pokemon.height + ")");
-	if (pokemon.height > 6) {
-		document.write(" - Wow, that's big!");
-	};
-	document.write("</p>")
+// adding an item to the array
+pokemonRepository.getAll().forEach(function (pokemon) {
+	pokemonRepository.addListItem(pokemon)
 });
-*/
-
-// 3rd possibility: with a for each loop and a named function
-
-function myLoopFunction(pokemon) {
-	document.write("<p>" + pokemon.name + " (height: " + pokemon.height + ")");
-	if (pokemon.height > 6) {
-		document.write(" - Wow, that's big!");
-	};
-	document.write("</p>")
-}
-pokemonRepository.getAll().forEach(myLoopFunction); //calling the getAll function in order to retrieve the data inside the IIFE
-
-document.write("<br>"); // for line break when js-file is loaded into html side
-
-// check if parameter added to the array is an object
-function addv(pokemon) {
-	if (typeof pokemon==='object') {
-		pokemonRepository.add(pokemon)
-	};
-}
 
 // just to check if object validation for the add-function's parameter works
 pokemonRepository.add({a:1});
