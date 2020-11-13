@@ -1,10 +1,9 @@
 // Wrapping global variables in an IIFE
-
 let pokemonRepository = (function() {
 	let pokemonList=[
 		{name: 'Bulbasaur', height: 7, type: ['grass','poison']},
 		{name: 'Ivysaur', height: 3.03, type: ['grass','poison']},
-		{name: 'Charmander', height: 2, type: 'fire'}
+		{name: 'Charmander', height: 2, type: 'fire'},
 	];
 
 	function getAll() {
@@ -41,23 +40,15 @@ let pokemonRepository = (function() {
 		console.log('This is not an object');
 		}
 	}
-		/*
-		if (Object.key pokemon==='name' && 'height' && 'type') { //this is not the way it works, but I don't know the correct way
-		pokemonList.push(pokemon);
-		}else{
-	console.log('This object does not have the correct object keys');
-	}
-	*/
-
 
 	return {
 		getAll: getAll,
 		add: add,
 		addListItem: addListItem
 	};
-})();
+})(); //end of IIFE
 
-// adding an item to the array
+// building the surface
 pokemonRepository.getAll().forEach(function (pokemon) {
 	pokemonRepository.addListItem(pokemon)
 });
