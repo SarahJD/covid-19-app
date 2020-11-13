@@ -32,10 +32,15 @@ let pokemonRepository = (function() {
 
 	function add(pokemon) {
 		if (typeof pokemon==='object') { //check if data type of inserted parameter is an object
-		pokemonList.push(pokemon);
+			if ('name' in pokemon && 'height' in pokemon && 'type' in pokemon){ //check if object has all of the required object keys
+			pokemonList.push(pokemon);
+			}else{
+			console.log('This object does not have the correct object keys')
+			}
 		}else{
 		console.log('This is not an object');
 		}
+	}
 		/*
 		if (Object.key pokemon==='name' && 'height' && 'type') { //this is not the way it works, but I don't know the correct way
 		pokemonList.push(pokemon);
@@ -43,7 +48,7 @@ let pokemonRepository = (function() {
 	console.log('This object does not have the correct object keys');
 	}
 	*/
-	}
+
 
 	return {
 		getAll: getAll,
@@ -58,9 +63,8 @@ pokemonRepository.getAll().forEach(function (pokemon) {
 });
 
 // just to check if object validation for the add-function's parameter works
-pokemonRepository.add({a:1});
+pokemonRepository.add({name: 'sarah', height: 3, type: 'poison'});
 console.log(pokemonRepository.getAll());
-console.log(Object.keys(pokemonRepository.getAll())); // returning the indices/length, not the keys like name, height, type
 
 // filter() function in order to check if a certain pokemon name is included in the array
 let checkName = pokemonRepository.getAll().filter(entry => entry.name === 'Charmander')
