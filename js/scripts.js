@@ -1,10 +1,19 @@
 // Wrapping global variables in an IIFE
 let pokemonRepository = (function() {
-	let pokemonList=[
-		{name: 'Bulbasaur', height: 7, type: ['grass','poison']},
-		{name: 'Ivysaur', height: 3.03, type: ['grass','poison']},
-		{name: 'Charmander', height: 2, type: 'fire'},
-	];
+	let pokemonList = [];
+	let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
+	function add(pokemon) {
+		if (typeof pokemon==='object') {   //check if data type of inserted parameter is an object
+			if ('name' in pokemon){   //check if object has the required object keys
+			pokemonList.push(pokemon);
+			}else{
+			console.log('This object does not have the correct object keys')
+			}
+		}else{
+		console.log('This is not an object');
+		}
+	}
 
 	function getAll() {
 		return pokemonList;
@@ -18,44 +27,73 @@ let pokemonRepository = (function() {
 		button.classList.add('pokemon-button');
 		listItem.appendChild(button);
 		pokemonList.appendChild(listItem);
-		addEventListenerToButton(button, pokemon);
+		button.addEventListener('click', function (event) {
+			showDetails(pokemon);
+		});
 	}
 
-	function addEventListenerToButton(myButton, myPokemon){
-		myButton.addEventListener('click', function(){showDetails(myPokemon)});
+	function showLoadingMessage() {
+		alert('Data is being loaded.');
+	}
+
+	function hideLoadingMessage() {
+				// disable alert of function showLoadingMessage
+	}
+
+	function loadList() {
+		showLoadingMessage();
+		return fetch(apiUrl).then(function (response) {
+			return response.json();
+		}).then(function (json) {
+			hideLoadingMessage();
+			json.results.forEach(function (item) {
+				let pokemon = {
+					name: item.name,
+					detailsUrl: item.url
+				};
+				add(pokemon);
+				console.log(pokemon);
+			});
+		}).catch(function (e) {
+			hideLoadingMessage();
+			console.error(e);
+		})
+	}
+
+	function loadDetails(item) {
+		showLoadingMessage();
+		let url = item.detailsUrl;
+		return fetch(url).then(function (response) {
+			return response.json();
+		}).then(function(details) {
+			hideLoadingMessage();
+			item.imageUrl = details.sprites.front_default;
+			item.height = details.height;
+			item.types = details.types;
+		}).catch(function(e) {
+			hideLoadingMessage();
+			console.error(e);
+		});
 	}
 
 	function showDetails(pokemon) {
+		pokemonList.loadDetails(pokemon).then(function () {
 		console.log(pokemon);
-	}
-
-	function add(pokemon) {
-		if (typeof pokemon==='object') { //check if data type of inserted parameter is an object
-			if ('name' in pokemon && 'height' in pokemon && 'type' in pokemon){ //check if object has all of the required object keys
-			pokemonList.push(pokemon);
-			}else{
-			console.log('This object does not have the correct object keys')
-			}
-		}else{
-		console.log('This is not an object');
-		}
+	});
 	}
 
 	return {
 		getAll: getAll,
 		add: add,
-		addListItem: addListItem
+		addListItem: addListItem,
+		loadList: loadList,
+		loadDetails: loadDetails,
+		showDetails: showDetails
 	};
 })(); //end of IIFE
 
-// building the surface
-pokemonRepository.getAll().forEach(function (pokemon) {
-	pokemonRepository.addListItem(pokemon)
+pokemonRepository.loadList().then(function() {
+	pokemonRepository.getAll().forEach(function(pokemon) {
+		pokemonRepository.addListItem(pokemon);
+	});
 });
-
-// just to check if object validation for the add-function's parameter works
-pokemonRepository.add({name: 'sarah', height: 3, type: 'poison'});
-console.log(pokemonRepository.getAll());
-
-// filter() function in order to check if a certain pokemon name is included in the array
-let checkName = pokemonRepository.getAll().filter(entry => entry.name === 'Charmander')
