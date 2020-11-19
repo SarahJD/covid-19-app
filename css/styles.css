@@ -4,12 +4,12 @@
 
 ### Primary
 
-- Cyan: hsl(179, 62%, 43%)
-- Bright Yellow: hsl(71, 73%, 54%)
+- Cyan: #009896
+- Greenish Yellow: #c0df34
 
 ### Neutral
 
-- Light Gray: hsl(204, 43%, 93%)
+- Light Gray: #e5eff5
 - Grayish Blue: hsl(218, 22%, 67%)
 
 
@@ -113,8 +113,8 @@ img:not([alt]) {
 .attribution {
 	background-color: inherit;
 	font-size: 0.688rem;
-	color: #fff;
-	background: hsl(179, 62%, 43%);
+	color: #e5eff5;
+	background: #009896;
 	text-align: center;
 	margin: 0 1rem 1rem 1rem;
 	border-radius: 0.2rem;
@@ -123,11 +123,11 @@ img:not([alt]) {
 }
 
 .attribution a {
-	color: hsl(228, 45%, 44%);
+	color: #c0df34;
 }
 
 .attribution a:hover, .attribution a:focus {
-  color: #fff;
+  color: #e5eff5;
 }
 
 /*----------------------------
@@ -141,7 +141,7 @@ body {
 	min-height: 100vh;
 	font-family: 'Karla', sans-serif;
 	font-size: 1rem;
-	background-color: hsl(204, 43%, 93%);
+	background-color: #e5eff5;
 }
 
 /*vertically and horizontally center the main content
@@ -150,8 +150,8 @@ force footer to bottom */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: hsl(179, 62%, 43%);
-	color: #fff;
+	background: #009896;
+	color: #e5eff5;
 	margin: 1rem;
 	border-radius: 0.2rem;
 	padding: 0.5rem;
@@ -168,7 +168,7 @@ h1{
 	display: block;
 	font-size: 1.5rem;
 	margin: 1rem;
-	color: hsl(204, 43%, 93%);
+	color: #e5eff5;
 }
 
 .pokemon-button {
@@ -178,8 +178,8 @@ h1{
 	border-radius: 0.1rem;
 	font-size: 1rem;
 	text-align: center;
-	background-color: hsl(71, 73%, 54%);
-	color: hsl(204, 43%, 93%);
+	background-color: #c0df34;
+	color: #006564;
 	cursor: pointer;
 	box-shadow: 0.1rem 0.1rem 0.1rem hsl(218, 22%, 67%);
 	transition: 0.2s opacity;
