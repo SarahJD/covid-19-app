@@ -32,20 +32,29 @@ let pokemonRepository = (function() {
 		});
 	}
 
-	function showLoadingMessage() {
-		alert('Data is being loaded.');
+
+	function showLoadingMessage(messageText) {
+		let loadingMessage = document.createElement('div');
+		let container = document.querySelector('.load-me');
+		loadingMessage.classList.add('loading-message');
+		loadingMessage.innerText = messageText;
+		container.appendChild(loadingMessage);
 	}
 
-	function hideLoadingMessage() {
-				// disable alert of function showLoadingMessage
+function hideLoadingMessage() {
+	let loadingMessage = document.querySelector('.loading-message');
+	let container = document.querySelector('.load-me');
+	if (loadingMessage) {
+		container.removeChild(loadingMessage);
 	}
+}
 
 	function loadList() {
-		showLoadingMessage();
+	showLoadingMessage('List is being loaded.');
 		return fetch(apiUrl).then(function (response) {
 			return response.json();
 		}).then(function (json) {
-			hideLoadingMessage();
+		hideLoadingMessage();
 			json.results.forEach(function (item) {
 				let pokemon = {
 					name: item.name,
@@ -61,7 +70,7 @@ let pokemonRepository = (function() {
 	}
 
 	function loadDetails(item) {
-		showLoadingMessage();
+		showLoadingMessage('Details are being loaded.');
 		let url = item.detailsUrl;
 		return fetch(url).then(function (response) {
 			return response.json();
