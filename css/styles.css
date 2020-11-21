@@ -4,7 +4,7 @@
 
 ### Primary
 
-- Cyan: #009896
+- Bluish Cyan: #009896
 - Greenish Yellow: #c0df34
 
 ### Neutral
@@ -93,6 +93,7 @@ select {
 }
 
 /* Blur images when they have no alt attribute */
+
 img:not([alt]) {
   filter: blur(10px);
 }
@@ -193,7 +194,66 @@ h1{
 	  opacity: 0.8;
 }
 
-@media screen and (min-width: 20em) {
+#modal-container {
+	display: none;
+}
+
+#modal-container.is-visible {
+	position: fixed;
+	padding: 0.8rem;
+	box-sizing: border-box;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #009896;
+	border-radius: 0.1rem;
+	z-index: 999;
+	overflow: auto;
+	display: grid;
+	text-align: center;
+}
+
+.modal {
+	margin: auto;
+	display: inline-block;
+	box-sizing: border-box;
+	background-color: #c0df34;
+	color: #006564;
+	padding: 0.8rem;
+	width: 100%;
+	max-width: 700px;
+	text-align: left;
+}
+
+.modal-close {
+	float: right;
+	-webkit-appearance: none;
+	border: 0;
+	background: none;
+	color: #006564;
+	text-decoration: underline;
+}
+
+.modal h1 {
+	margin-left: 0;
+	color: #006564;
+	margin-top: 0;
+}
+
+.modal p {
+	color: #006564;
+	display: inline-block;
+	margin-bottom: 0;
+}
+
+.pokemon-picture {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+@media screen and (min-width: 25em) {
 	body {
 		display: flex;
 		align-items: center;
@@ -203,6 +263,10 @@ h1{
 		width: 15rem;
 		min-height: 30rem;
 	}
+
+.modal {
+	width: 50%;
+}
 
 .attribution {
 	width: 15rem;
