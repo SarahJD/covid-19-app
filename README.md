@@ -1,3 +1,4 @@
 # pokedex-app
 
-This is a basic app with vanilla JavaScript that gets some data, displays it in a responsive layout, and uses an advanced UI pattern, modals, to display more details of individual items.
+This is a basic app initially built with vanilla JavaScript that fetches data from the Pokdex API, displays it, and uses modals to display more details of each individual item including an image.
+The navigation bar and the modal were built with Bootstrap. The layout is responsive. 
