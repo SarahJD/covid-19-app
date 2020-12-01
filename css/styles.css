@@ -44,9 +44,12 @@ h1{
 	display: block;
 	font-size: 1.5rem;
 	margin: 1rem;
-	color: #e5eff5;
+	color: black;
 }
 
+p {
+	color: black; 
+}
 /*.pokemon-button {
 	border: none;
 	display: block;
@@ -69,7 +72,7 @@ h1{
 .pokemon-button:focus {
 	  opacity: 0.8;
 }
-*/
+
 #modal-container {
 	display: none;
 }
