@@ -140,6 +140,8 @@ let pokemonRepository = (function() {
 	};
 })(); //end of IIFE
 
+
+// Promise: fetches data and builds pokemon list when data is ready
 pokemonRepository.loadList().then(function() {
 	pokemonRepository.getAll().forEach(function(pokemon) {
 		pokemonRepository.addListItem(pokemon);
