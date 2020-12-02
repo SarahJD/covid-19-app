@@ -38,6 +38,10 @@ body {
 	min-height: 100vh;
 }
 
+.heading-wrapper {
+	padding: 1rem;
+}
+
 .heading {
 	color: #e5eff5;
 	text-align: center;
