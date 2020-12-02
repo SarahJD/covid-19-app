@@ -1,6 +1,6 @@
 /** Used Colors
 
-- Bluish Cyan: #009896
+- Bluish Cyan: #009896 #007977
 - Greenish Yellow: #c0df34
 - Light Gray: #e5eff5
 **/
@@ -19,6 +19,8 @@ body {
 	background-color: #c0df34;
 }
 
+.nav-link
+
 .navbar-brand {
 	font-size: 2rem;
 }
@@ -27,7 +29,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background: #009896;
+	background: #007977;
 	color: #e5eff5;
 	border-radius: 0.2rem;
 	min-width: 14rem;
@@ -56,12 +58,12 @@ h1 {
 	display: block;
 	font-size: 1.5rem;
 	background-color: #c0df34;
-	color: #009896;
+	color: #007977;
 }
 
 .modal-body {
 	color: #e5eff5;
-	background-color: #009896;
+	background-color: #007977;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
@@ -81,7 +83,7 @@ h1 {
 }
 
 .pokemon-button {
-	background-color: #009896;
+	background-color: #007977;
 	color: #e5eff5;
 	font-size: 1.2rem;
 }
