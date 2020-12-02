@@ -19,42 +19,22 @@
   		<div class="collapse navbar-collapse" id="navbarSupportedContent">
     		<ul class="navbar-nav mr-auto">
       		<li class="nav-item active">
-        		<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        		<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
       		</li>
       		<li class="nav-item">
-        		<a class="nav-link" href="about.html">About</a>
+        		<a class="nav-link" href="#">About</a>
       		</li>
       </div>
 		</nav>
 
 			<main class="box-wrapper">
 
+				<p class="paragraph-about">This is a basic app initially built with vanilla JavaScript that fetches data from the
+				<a href="https://pokeapi.co/">PokéAPI</a>, displays it, and uses modals to display more details
+				of each individual item including an image. The navigation bar and the modal were built with
+				Bootstrap. The layout is responsive.
+				</p>
 
-				<h1 class="heading">Explore the world of pokemons ...</h1>
-
-				<!-- Loading Message -->
-				<div class = "load-me">
-				</div>
-
-				<!-- Creating pokemon-list from the scripts.js file -->
-				<ul class="pokemon-list list-group"></ul>
-
-				<!--Modal -->
-				<div id="modal-container" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class= "modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span> <!-- Shows X Sign -->
-									</button>
-								</div>
-								<!-- Modal Body starts here (displays pokemon details) -->
-								<div class="modal-body">
-								</div>
-						</div>
-					</div>
-				</div>
 
 			</main>
 		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
